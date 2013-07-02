@@ -1,0 +1,48 @@
+(function(){
+	$(function(){
+		app.header = {};
+		$.extend(app.header, {
+			parent: app,
+			root: null,
+			container: null,
+			init: function(){
+				this.initRoot();
+				this.initContainer();
+				this.initTabs();
+			},
+			initRoot: function(){
+				this.root = this.parent.root;
+			},
+			initTabs: function(){
+				var _self = this;
+				this.root.fmx.tabs({
+					container: this.root.container.find('#content'),
+					triggers: this.container.find('.header_menu_element'),
+					active_div: this.container.find('#header_menu_active'),
+					loading: function(){
+						_self.tabsLoading();
+					},
+					loaded: function(){
+						_self.tabsLoaded();
+					},
+					error: function(){
+						_self.tabsError();
+					}
+				});
+			},
+			tabsLoading: function(){
+				this.root.loading();
+			},
+			tabsLoaded: function(){
+				this.root.loaded();
+			},
+			tabsError: function(){
+				this.root.error();
+			},
+			initContainer: function(){
+				this.container = this.root.container.find('#header');
+			}
+		});
+		app.header.init();
+	});
+})(jQuery);

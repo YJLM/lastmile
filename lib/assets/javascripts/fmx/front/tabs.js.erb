@@ -1,0 +1,211 @@
+(function(){
+	var nil = $();
+	$.fmx_tabs = function(opts){
+		var _self = {};
+		$.extend(_self, {
+			container: nil,
+			triggers: nil,
+			active_div: nil,
+			active: null,
+			params: {},
+			timeouts: {
+				show: 500,
+				slide: 300
+			},
+			type: 'post',
+			init: function(){
+				this.initActiveDiv();
+				this.initTriggers();
+			},
+			initActiveDiv: function(){
+				var container = this.active_div;
+				this.active_div = {};
+				$.extend(this.active_div, {
+					parent: this,
+					view: this,
+					half_with: null,
+					container: container,
+					init: function(){
+						this.initHalfWidth();
+					},
+					initHalfWidth: function(){
+						this.half_with = this.container.width() / 2;
+					},
+					setPosition: function(left){
+						this.container.stop(true, false).animate({
+							left: (left - this.half_with)
+						}, this.view.timeouts.slide);
+					}
+				});
+				this.active_div.init();
+			},
+			initTriggers: function(){
+				var _self = this;
+				var triggers = this.triggers;
+				this.triggers = [];
+				triggers.each(function(){
+					_self.addTrigger($(this));
+				});
+				if(this.triggers.length > 0){
+					var first = this.triggers[0];
+					this.setActive(first);
+				}
+			},
+			setActive: function(which){
+				if(which != this.active){
+					if(this.active != null) this.active.disable();
+					this.active = which;
+					this.active.enable();
+				}
+			},
+			addTrigger: function(container){
+				var trigger = {};
+				$.extend(trigger, {
+					parent: this,
+					view: this,
+					container: container,
+					tab: null,
+					url: null,
+					left: null,
+					init: function(){
+						this.initContainer();
+						this.initUrl();
+						this.initLeft();
+						this.initTab();
+					},
+					initLeft: function(){
+						var pos = this.container.position();
+						var width = this.container.outerWidth();
+						this.left = pos.left + (width / 2);
+					},
+					initUrl: function(){
+						this.url = this.container.attr('href');
+					},
+					initTab: function(){
+						this.tab = this.view.getTab({
+							trigger: this
+						});
+					},
+					initContainer: function(){
+						var _self = this;
+						this.container.click(function(e){
+							e.preventDefault();
+							_self.containerOnClick(e, $(this));
+						});
+					},
+					containerOnClick: function(e, element){
+						this.view.setActive(this);
+					},
+					enable: function(){
+						this.container.addClass('active');
+						this.setActiveDiv();
+						this.tab.show();
+					},
+					setActiveDiv: function(){
+						this.view.active_div.setPosition(this.left);
+					},
+					disable: function(){
+						this.container.removeClass('active');
+						this.tab.hide();
+					}
+				});
+				trigger.init();
+				this.triggers.push(trigger);
+			},
+			getTab: function(opts){
+				var tab = {};
+				$.extend(tab, {
+					parent: this,
+					view: this,
+					trigger: null,
+					is_loaded: false,
+					aborted: false,
+					req: null,
+					init: function(){
+						this.initContainer();
+					},
+					initContainer: function(){
+						this.container = $('<div class="fmx_tabs_tab"></div>');
+						this.container.appendTo(this.view.container);
+					},
+					show: function(){
+						this.container.css({
+							display: 'block',
+							opacity: 0
+						});
+						if(!this.is_loaded){
+							this.doRequest();
+						}
+						else{
+							this.animate();
+						}
+					},
+					animate: function(){
+						this.container.stop(true, false).animate({
+							opacity: 1
+						}, this.view.timeouts.show);
+					},
+					hide: function(){
+						this.abort();
+						this.container.stop(true, true).css({
+							display: 'none',
+							opacity: 1
+						});
+					},
+					abort: function(){
+						if(this.req != null){
+							this.aborted = true;
+							this.req.abort();
+						}
+					},
+					loading: function(){
+						this.abort();
+						this.view.loading();
+					},
+					loaded: function(){
+						this.req = null;
+						this.view.loaded();
+					},
+					doRequest: function(){
+						var _self = this;
+						this.loading();
+						$.ajax({
+							type: this.view.type,
+							url: this.trigger.url,
+							data: this.view.params,
+							success: function(data){
+								_self.success(data);
+							},
+							error: function(){
+								_self.error();
+							}
+						});
+					},
+					success: function(data){
+						this.loaded();
+						this.is_loaded = true;
+						this.container.html(data);
+						this.animate();
+					},
+					error: function(){
+						this.loaded();
+						if(this.aborted){
+							this.aborted = false;
+						}
+						else{
+							this.is_loaded = true;
+							this.view.error();
+						}
+					}
+				}, opts);
+				tab.init();
+				return tab;
+			},
+			loading: function(){},
+			loaded: function(){},
+			error: function(){}
+		}, opts);
+		_self.init();
+		return _self;
+	}
+})(jQuery);

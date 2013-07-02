@@ -1,0 +1,8 @@
+globals:
+  session_name: user
+  lang: es
+  salt: lastmile
+development:
+  scope: ''
+production:
+  scope: ''

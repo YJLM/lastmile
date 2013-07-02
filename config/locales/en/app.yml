@@ -1,0 +1,17 @@
+en:
+  app:
+    title: 'Last Mile'
+    messages:
+      loading: 'Loading'
+      error: 'There was an error. Please try again later.'
+    social_links:
+      facebook: 'https://www.facebook.com/pages/Feather-México/254651244564796'
+      twitter: 'https://twitter.com/FeatherMexico'
+      mail: 'mailto:contact@mit.edu'
+    menu:
+      home: 'Home'
+      team: 'Team'
+      features: 'Features'
+      contact: 'Contact'
+    footer:
+      copyright: 'MIT CTL &copy; 2013. All Rights Reserved'

@@ -1,0 +1,9 @@
+<div id="header_menu">
+	<div id="header_menu_active">
+		<%= image_tag 'app/ui/arrows/menu.png', width: 24, height: 10 %>
+	</div>
+<% @menu.each do |el| %>
+	<%= render partial: 'shared/ui/header/menu/element', locals: { el: el } %>
+<% end %>
+	<div class="clear"></div>
+</div>
