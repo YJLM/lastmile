@@ -1,7 +1,9 @@
 class TeamController < FrontController
   
+  before_filter :assert_ajax_post
+  
   def index
-    render text: 'team'
+    @team = Front::User.list
   end
   
 end

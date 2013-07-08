@@ -1,0 +1,57 @@
+@import 'shared.css.scss';
+#contact{
+	color: #898989;
+	#contact_label{
+		font-size: 12px;
+		line-height: 1.3em;
+		margin: 0 0 15px 0;
+	}
+	#contact_container{
+		margin: 30px 0 0 0;
+	}
+	.contact_view{
+		display: none;
+		&#contact_form_view{
+			display: block;
+		}
+	}
+	form#contact_form{
+		.field_wrapper{
+			margin: 0 0 20px 0;
+			&.top_margin{
+				margin: 40px 0 20px 0;
+			}
+		}
+		.field{
+			display: block;
+			border-bottom: 1px solid #CFD0D0;
+			&.no_border{
+				border-bottom: 0 none;
+			}
+			&.half{
+				width: 220px;
+				float: left;
+				&.first{
+					margin: 0 20px 0 0;
+				}
+			}
+			input[type="text"], textarea{
+				border: 0 none;
+				color: #555555;
+				font-size: 13px;
+				font-family: $font-family;
+				width: 100%;
+				padding: 3px 4px 6px 4px;
+			}
+			textarea{
+				border: 1px solid #CFD0D0;
+			}
+		}
+		.form_actions{
+			input[type="submit"]{
+				float: right;
+				border: 0 none;
+			}
+		}
+	}
+}

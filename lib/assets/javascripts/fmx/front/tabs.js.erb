@@ -8,14 +8,45 @@
 			active_div: nil,
 			active: null,
 			params: {},
+			hash: null,
 			timeouts: {
 				show: 500,
-				slide: 300
+				slide: 300,
+				hash: 300
 			},
+			separator: {
+				url: '!'
+			},
+			url_regex: null,
 			type: 'post',
 			init: function(){
+				this.initUrlRegex();
 				this.initActiveDiv();
 				this.initTriggers();
+				this.initInterval();
+			},
+			initUrlRegex: function(){
+				this.url_regex = new RegExp('^#' + this.separator.url + '(.+)$');
+			},
+			initInterval: function(){
+				var _self = this;
+				setInterval(function(){
+					_self.intervalCallback();
+				}, this.timeouts.hash);
+			},
+			intervalCallback: function(){
+				var hash = window.location.hash;
+				if(hash != this.hash){
+					var matches = this.url_regex.exec(hash);
+					if(matches != null){
+						var key = matches[matches.length - 1];
+						var el = this.triggers[key];
+						if(el != null){
+							this.hash = hash;
+							this.setActive(el);
+						}
+					}
+				}
 			},
 			initActiveDiv: function(){
 				var container = this.active_div;
@@ -42,13 +73,30 @@
 			initTriggers: function(){
 				var _self = this;
 				var triggers = this.triggers;
-				this.triggers = [];
+				this.triggers = {};
 				triggers.each(function(){
 					_self.addTrigger($(this));
 				});
-				if(this.triggers.length > 0){
-					var first = this.triggers[0];
-					this.setActive(first);
+				this.initActive();
+			},
+			initActive: function(){
+				var found = false;
+				var hash = window.location.hash;
+				var matches = this.url_regex.exec(hash);
+				if(matches != null){
+					var key = matches[matches.length - 1];
+					var el = this.triggers[key];
+					found = el != null;
+				}
+				if(!found){
+					var first = null;
+					$.each(this.triggers, function(key, trigger){
+						first = trigger;
+						return false;
+					});
+					if(first != null){
+						this.setHash(first);
+					}
 				}
 			},
 			setActive: function(which){
@@ -57,6 +105,9 @@
 					this.active = which;
 					this.active.enable();
 				}
+			},
+			setHash: function(which){
+				window.location = '#' + this.separator.url + which.url;
 			},
 			addTrigger: function(container){
 				var trigger = {};
@@ -94,7 +145,7 @@
 						});
 					},
 					containerOnClick: function(e, element){
-						this.view.setActive(this);
+						this.view.setHash(this);
 					},
 					enable: function(){
 						this.container.addClass('active');
@@ -110,7 +161,7 @@
 					}
 				});
 				trigger.init();
-				this.triggers.push(trigger);
+				this.triggers[trigger.url] = trigger;
 			},
 			getTab: function(opts){
 				var tab = {};

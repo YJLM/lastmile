@@ -1,0 +1,40 @@
+.fmx_slider{
+	.fmx_slider_not_found_label{
+		position: absolute;
+		width: 250px;
+		height: 16px;
+		text-align: center;
+		font-size: 12px;
+		left: 50%;
+		top: 50%;
+		margin-left: -125px;
+		margin-top: -8px;
+		color: #646464;
+	}
+	.fmx_slider_navigation{
+		width: 23px;
+		height: 43px;
+		overflow: hidden;
+		z-index: 4010;
+		top: 50%;
+		margin-top: -20px;
+		cursor: pointer;
+		&.prev{
+			left: 5px;
+		}
+		&.next{
+			left: 430px;
+		}
+		img{
+			width: 23px;
+			height: 86px;
+			top: 0px;
+		}
+		&.disabled{
+			cursor: auto;
+			img{
+				top: -43px;
+			}
+		}
+	}
+}

@@ -1,0 +1,15 @@
+<%= javascript_include_tag 'app/views/team' %>
+<div id="team">
+	<h1 class="view_title"><%= t 'app.views.team.title' %></h1>
+	<div id="team_about">
+		<div id="team_about_column" class="team_column">
+			<h2 id="team_about_column_title"><%= t 'app.views.team.about.title' %></h2>
+			<div id="team_about_column_content"><%= t 'app.views.team.about.content' %></div>
+		</div>
+		<div id="team_pic_column" class="team_column">
+			<%= image_tag 'app/pic/team.png', width: 160, height: 160 %>
+		</div>
+		<div class="clear">
+	</div>
+	<%= render partial: 'team/users/users', locals: { users: @team } %>
+</div>

@@ -1,0 +1,55 @@
+<%= javascript_include_tag 'app/views/contact' %>
+<div id="contact">
+	<div id="contact_title">
+		<h1 class="view_title"><%= t 'app.views.contact.title' %></h1>
+		<p id="contact_label"><%= t 'app.views.contact.label' %></p>
+	</div>
+	<div id="contact_container">
+		<div id="contact_form_view" class="contact_view">
+			<%= form_for :contact, url: { action: :contact }, html: { id: 'contact_form', class: 'fmx_form', method: 'post' } do |f| %>
+				<fieldset>
+					<div class="field_wrapper">
+						<div class="field half first">
+							<div class="field_container">
+								<%= f.text_field :name, placeholder: t('app.views.contact.fields.name') %>
+							</div>
+						</div>
+						<div class="field half">
+							<div class="field_container">
+								<%= f.text_field :mail, placeholder: t('app.views.contact.fields.mail') %>
+							</div>
+						</div>
+						<div class="clear"></div>
+					</div>
+					<div class="field_wrapper">
+						<div class="field half first">
+							<div class="field_container">
+								<%= f.text_field :organization, placeholder: t('app.views.contact.fields.organization') %>
+							</div>
+						</div>
+						<div class="field half">
+							<div class="field_container">
+								<%= f.text_field :subject, placeholder: t('app.views.contact.fields.subject') %>
+							</div>
+						</div>
+						<div class="clear"></div>
+					</div>
+					<div class="field_wrapper top_margin">
+						<div class="field no_border">
+							<div class="field_container">
+								<%= f.text_area :message, placeholder: t('app.views.contact.fields.message') %>
+							</div>
+						</div>
+					</div>
+					<div class="form_actions">
+						<%= submit_tag t('app.views.contact.actions.submit'), class: 'button' %>
+						<div class="clear"></div>
+					</div>
+				</fieldset>
+			<% end %>
+		</div>
+		<div id="contact_success_view" class="contact_view">
+			
+		</div>
+	</div>
+</div>

@@ -1,2 +1,6 @@
 en:
   fmx:
+    front:
+      slider:
+        labels:
+          not_found: 'No slides found.'

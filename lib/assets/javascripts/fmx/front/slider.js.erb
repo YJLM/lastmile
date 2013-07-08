@@ -1,0 +1,304 @@
+(function(){
+	var nil = $();
+	$.fmx_slider = function(opts){
+		var _self = {};
+		$.extend(_self, {
+			loaded: false,
+			has_touch: false,
+			_window: null,
+			container: nil,
+			loader: null,
+			slides: [],
+			loaded_slides: 0,
+			not_found_label: null,
+			navigation: null,
+			active: null,
+			idle_timeout: null,
+			ttl_timeout: null,
+			labels: {
+				not_found: 'No elements found.'
+			},
+			intervals: {
+				color: 500,
+				idle: 3000,
+				ttl: 5000
+			},
+			init: function(){
+				this.initLoader();
+				this.initNotFoundLabel();
+				this.initNavigation();
+				this.initSlides();
+				this.initTtlTimeout();
+			},
+			initTtlTimeout: function(){
+				if($.support.boxModel){
+					var _self = this;
+					this.ttl_timeout = setTimeout(function(){
+						_self.ttlCallback();
+					});
+				}
+			},
+			ttlCallback: function(){
+				this.load();
+			},
+			initNavigation: function(){
+				this.navigation = {};
+				$.extend(this.navigation, {
+					parent: this,
+					next: null,
+					prev: null,
+					elements: null,
+					init: function(){
+						this.initElements();
+					},
+					initElements: function(){
+						this.elements = this.parent.container.find('.fmx_slider_navigation');
+						this.initPrev();
+						this.initNext();
+					},
+					initPrev: function(){
+						var _self = this;
+						this.prev = this.elements.filter('.prev').click(function(e){
+							e.preventDefault();
+							_self.prevOnClick(e, $(this));
+						});
+					},
+					prevOnClick: function(e, element){
+						var active = this.parent.active;
+						if(active.index > 0){
+							var el = this.parent.slides[active.index - 1];
+							this.parent.setActive(el);
+						}
+					},
+					initNext: function(){
+						var _self = this;
+						this.next = this.elements.filter('.next').click(function(e){
+							e.preventDefault();
+							_self.nextOnClick(e, $(this));
+						});
+					},
+					nextOnClick: function(e, element){
+						var active = this.parent.active;
+						if((active.index + 1) < this.parent.slides.length){
+							var el = this.parent.slides[active.index + 1];
+							this.parent.setActive(el);
+						}
+					},
+					update: function(){
+						this.elements.removeClass('disabled');
+						var active = this.parent.active;
+						if(active.index == 0){
+							this.prev.addClass('disabled');
+						}
+						if((active.index + 1) == this.parent.slides.length){
+							this.next.addClass('disabled');
+						}
+					},
+					show: function(){
+						this.elements.css('display', 'block');
+					}
+				});
+				this.navigation.init();
+			},
+			initNotFoundLabel: function(){
+				this.not_found_label = $('<div class="fmx_slider_not_found_label"></div>');
+				this.not_found_label.html(this.labels.not_found);
+				this.not_found_label.appendTo(this.container);
+			},
+			initSlides: function(){
+				var _self = this;
+				var slides = this.container.find('.home_slide');
+				var i = 0;
+				slides.each(function(){
+					_self.addSlide($(this), i);
+					++i;
+				});
+				if(slides.length == 0){
+					this.load();
+				}
+			},
+			addSlide: function(container, index){
+				var slide = [];
+				$.extend(slide, {
+					parent: this,
+					index: index,
+					container: container,
+					color: null,
+					elements: [],
+					loaded_elements: 0,
+					completed_elements: 0,
+					animating: false,
+					init: function(){
+						this.initContainer();
+						this.initElements();
+					},
+					initElements: function(){
+						var _self = this;
+						var elements = this.container.find('.slide_element');
+						elements.each(function(){
+							_self.addElement($(this));
+						});
+					},
+					addElement: function(container){
+						var element = {};
+						$.extend(element, {
+							parent: this,
+							container: container,
+							animation: null,
+							init: function(){
+								this.initAnimation();
+							},
+							initAnimation: function(){
+								var _self = this;
+								this.animation = $.fmx_animation({
+									container: this.container,
+									load: function(){
+										_self.load();
+									},
+									complete: function(){
+										_self.complete();
+									}
+								});
+							},
+							complete: function(){
+								this.parent.elementOnComplete();
+							},
+							load: function(){
+								this.parent.elementOnLoad();
+							},
+							animate: function(){
+								this.animation.animate();
+							},
+							abort: function(){
+								this.animation.abort();
+							},
+							reset: function(){
+								this.animation.reset();
+							}
+						});
+						element.init();
+						this.elements.push(element);
+					},
+					elementOnComplete: function(){
+						++this.completed_elements;
+						if(this.completed_elements == this.elements.length){
+							this.parent.slideOnComplete();
+						}
+					},
+					elementOnLoad: function(){
+						++this.loaded_elements;
+						if(this.loaded_elements == this.elements.length){
+							this.parent.slideOnLoad();
+						}
+					},
+					start: function(){
+						this.container.css('display', 'block');
+						$.each(this.elements, function(key, el){
+							el.animate();
+						});
+					},
+					abort: function(){
+						this.completed_elements = 0;
+						this.container.css('display', 'none');
+						$.each(this.elements, function(key, el){
+							el.abort();
+							el.reset();
+						});
+					},
+					initContainer: function(){
+						this.color = this.container.attr('data-color');
+					}
+				});
+				slide.init();
+				this.slides.push(slide);
+			},
+			slideOnComplete: function(){
+				var _self = this;
+				this.idle_timeout = setTimeout(function(){
+					_self.idleTimeoutCallback();
+				}, this.intervals.idle);
+			},
+			idleTimeoutCallback: function(){
+				var next_index = (this.active.index + 1) % this.slides.length;
+				var next = this.slides[next_index];
+				this.setActive(next);
+				this.idle_timeout = null;
+			},
+			slideOnLoad: function(){
+				++this.loaded_slides;
+				if(this.loaded_slides == this.slides.length){
+					this.load();
+				}
+			},
+			load: function(){
+				if(!this.loaded){
+					this.loaded = true;
+					this.loader.remove();
+					if(this.slides.length == 0){
+						this.not_found_label.css('display', 'block');
+					}
+					else{
+						var first = this.slides[0];
+						this.navigation.show();
+						this.setActive(first);
+					}
+				}
+			},
+			setActive: function(which){
+				if(which != this.active){
+					if(this.active != null){
+						this.active.abort();
+					}
+					if(this.idle_timeout != null){
+						clearTimeout(this.idle_timeout);
+						this.idle_timeout = null;
+					}
+					this.active = which;
+					this.navigation.update();
+					var color = this.active.color;
+					var _self = this;
+					this.container.stop(true, false).animate({
+						'background-color': color
+					}, this.intervals.color, 'linear', function(){
+						_self.containerOnColor();
+					});
+				}
+			},
+			containerOnColor: function(){
+				this.active.start();
+			},
+			initLoader: function(){
+				this.loader = {};
+				$.extend(this.loader, {
+					parent: this,
+					container: null,
+					dimensions: null,
+					init: function(){
+						this.initContainer();
+						this.initSprite();
+					},
+					initSprite: function(){
+						$.fmx_sprite({
+							container: this.container,
+							fps: 12,
+							dimensions: this.dimensions
+						});
+					},
+					initContainer: function(){
+						this.container = this.parent.container.find('.fmx_slider_loader');
+						this.dimensions = {
+							width: this.container.width(),
+							height: this.container.height()
+						};
+					},
+					remove: function(){
+						this.container.remove();
+					}
+				});
+				this.loader.init();
+			}
+		}, opts);
+		_self.init();
+		return _self;
+	}
+})(jQuery);

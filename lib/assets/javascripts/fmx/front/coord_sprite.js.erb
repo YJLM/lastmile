@@ -1,0 +1,128 @@
+(function(){
+	var nil = $();
+	$.fmx_coord_sprite = function(opts){
+		var _self = {};
+		$.extend(_self, {
+			container: nil,
+			positions: {
+				north: {
+					index: 0
+				},
+				north_east: {
+					index: 1
+				},
+				east: {
+					index: 2
+				},
+				south_east: {
+					index: 3
+				},
+				south: {
+					index: 4
+				},
+				south_west: {
+					index: 5
+				},
+				west: {
+					index: 6
+				},
+				north_west: {
+					index: 7
+				}
+			},
+			dimen: null,
+			position: null,
+			center: null,
+			init: function(){
+				this.initContainer();
+				this.initImg();
+			},
+			initImg: function(){
+				var src = this.container.attr('data-src');
+				if(src != null){
+					var _self = this;
+					this.img = $('<img />', {
+						src: src,
+						load: function(){
+							_self.imgOnLoad();
+						}
+					});
+					this.img.appendTo(this.container);
+				}
+			},
+			imgOnLoad: function(){
+				var _self = this;
+				this.initDimen();
+				this.initCenter();
+				$(document).mousemove(function(e){
+					_self.mousemove(e);
+				});
+			},
+			mousemove: function(e){
+				var angle = Math.atan( Math.abs(e.pageY - this.center.y) / Math.abs(e.pageX - this.center.x) );
+				angle *= (180 / Math.PI);
+				if(e.pageX <= this.center.x && e.pageY <= this.center.y){
+					angle = 180 - angle;
+				}
+				else if(e.pageX <= this.center.x && e.pageY >= this.center.y){
+					angle += 180; 
+				}
+				else if(e.pageX >= this.center.x && e.pageY >= this.center.y){
+					angle = 360 - angle;
+				}
+				if((angle >= 0 && angle <= 22.5) || (angle >= 337.5 && angle <= 360)){
+					this.position = this.positions.east;
+				}
+				else if(angle >= 22.5 && angle <= 67.5){
+					this.position = this.positions.north_east;
+				}
+				else if(angle >= 67.5 && angle <= 112.5){
+					this.position = this.positions.north;
+				}
+				else if(angle >= 112.5 && angle <= 157.5){
+					this.position = this.positions.north_west;
+				}
+				else if(angle >= 157.5 && angle <= 202.5){
+					this.position = this.positions.west;
+				}
+				else if(angle >= 202.5 && angle <= 247.5){
+					this.position = this.positions.south_west;
+				}
+				else if(angle >= 247.5 && angle <= 292.5){
+					this.position = this.positions.south;
+				}
+				else if(angle >= 292.5 && angle <= 337.5){
+					this.position = this.positions.south_east;
+				}
+				this.update();
+			},
+			update: function(){
+				var index = this.position.index;
+				var position = this.dimen.height * index * -1;
+				this.img.css({
+					top: position
+				});
+			},
+			initDimen: function(){
+				this.dimen = {};
+				$.extend(this.dimen, {
+					width: this.container.width(),
+					height: this.container.height()
+				});
+			},
+			initCenter: function(){
+				this.center = {};
+				var offset = this.container.offset();
+				$.extend(this.center, {
+					x: offset.left + (this.container.width() / 2),
+					y: offset.top + (this.container.height() / 2)
+				});
+			},
+			initContainer: function(){
+				this.container.addClass('fmx_coord_sprite');
+			}
+		}, opts);
+		_self.init();
+		return _self;
+	}
+})(jQuery);

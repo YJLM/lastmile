@@ -1,0 +1,108 @@
+@import 'shared.css.scss';
+#team{
+	#team_about{
+		margin: 0 0 10px 0;
+	}
+	.team_column{
+		float: left;
+		&#team_about_column{
+			width: 280px;
+			#team_about_column_title{
+				margin: 17px 0 15px;
+			}
+			#team_about_column_content{
+				color: $base-font-color;
+				font-size: 12px;
+				line-height: 1.5em;
+			}
+		}
+		&#team_pic_column{
+			width: 160px;
+			margin: 0 0 0 10px;
+			img{
+				width: 160px;
+				height: 160px;
+				display: block;
+			}
+		}
+	}
+	#team_users{
+		margin: 20px 0 20px 0;
+		.team_user{
+			float: left;
+			width: 130px;
+			height: 55px;
+			overflow: hidden;
+			padding: 4px 5px;
+			margin: 10px 7px;
+			.team_user_col{
+				float: left;
+				display: block;
+				&.left{
+					width: 55px;
+					height: 55px;
+					.team_user_pic{
+						width: 55px;
+						height: 55px;
+						img{
+							display: block;
+							width: 55px;
+							height: 440px;
+							left: 0px;
+							top: 0px;
+							border: 0 none;
+							outline: none;
+						}
+					}
+				}
+				&.right{
+					width: 66px;
+					margin: 0 0 0 8px;
+				}
+				.team_user_label{
+					display: block;
+					font-size: 10px;
+					margin: 0 0 3px 0;
+					&.main{
+						font-size: 11px;
+						font-weight: $bold;
+						color: #000000;
+					}
+					&.gray{
+						color: $base-font-color;
+					}
+					&.blue{
+						color: #2C99C4;
+					}
+				}
+				@include link('a.team_user_social_link') {
+					width: 15px;
+					height: 15px;
+					display: block;
+					position: relative;
+					float: left;
+					margin: 0 5px 0 0;
+					border: 0 none;
+					outline: none;
+					overflow: hidden;
+				}
+				a.team_user_social_link{
+					img{
+						width: 15px;
+						height: 30px;
+						position: absolute;
+						left: 0px;
+						top: 0px;
+						border: 0 none;
+						outline: none;
+					}
+					&:hover{
+						img{
+							top: -15px;
+						}
+					}
+				}
+			}
+		}
+	}
+}

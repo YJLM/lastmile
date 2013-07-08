@@ -1,0 +1,27 @@
+(function(){
+	$(function(){
+		app.home = {};
+		$.extend(app.home, {
+			parent: app,
+			root: null,
+			container: null,
+			init: function(){
+				this.initRoot();
+				this.initContainer();
+				this.initSlider();
+			},
+			initSlider: function(){
+				this.root.fmx.slider({
+					container: this.container.find('#home_slider')
+				});
+			},
+			initContainer: function(){
+				this.container = this.root.container.find('#home');
+			},
+			initRoot: function(){
+				this.root = this.parent.root;
+			}
+		});
+		app.home.init();
+	});
+})(jQuery);

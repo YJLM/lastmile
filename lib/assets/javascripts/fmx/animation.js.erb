@@ -1,0 +1,167 @@
+(function(){
+	$.fmx_animation = function(opts){
+		var _self = {};
+		$.extend(_self, {
+			container: null,
+			dimensions: null,
+			parent_container: null,
+			to_parent_container: false,
+			delay: null,
+			interval: null,
+			timeout: null,
+			auto_start: false,
+			animating: false,
+			position: null,
+			from_data: null,
+			to_data: null,
+			reset_on_complete: false,
+			easing: null,
+			element: null,
+			init: function(){
+				this.initParentContainer();
+				this.initContainer();
+				this.initInterval();
+				this.initDelay();
+				this.initEasing();
+				this.initImg();
+			},
+			initEasing: function(){
+				if(this.easing == null){
+					var easing = this.container.attr('data-easing');
+					this.easing = easing ? easing : 'linear';
+				}
+			},
+			initDelay: function(){
+				if(this.delay == null){
+					var delay = parseInt(this.container.attr('data-delay'));
+					if(!isNaN(delay) && isFinite(delay)){
+						this.delay = delay;
+					}
+				}
+			},
+			initInterval: function(){
+				if(this.interval == null){
+					this.interval = parseInt(this.container.attr('data-interval'));
+				}
+			},
+			initImg: function(){
+				var src = this.container.attr('data-src');
+				if(src){
+					var _self = this;
+					this.container.empty();
+					this.img = $('<img />', 
+						$.extend({
+							src: src,
+							load: function(){
+								_self.imgOnLoad();
+							}
+						}, this.dimensions)
+					);
+					this.img.css(
+						$.extend({
+							display: 'block'
+						}, this.dimensions)
+					);
+					if(!$.support.opacity){
+						this.img.css({
+							'filter': "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + src + "', sizing='scale')"
+						});
+					}
+					if(this.to_parent_container){
+						this.element = this.img;
+						this.img.css('position', 'absolute');
+					}
+					else{
+						this.element = this.container;
+					}
+					this.reset();
+					var container = this.to_parent_container ? this.parent_container : this.container;
+					this.img.appendTo(container);
+				}
+				else{
+					this.element = this.container;
+					this.reset();
+					this.imgOnLoad();
+				}
+			},
+			reset: function(){
+				this.element.css(this.from_data);
+				//console.log(this.from_data);
+			},
+			imgOnLoad: function(){
+				if(this.auto_start){
+					this.animate();
+				}
+				this.load();
+			},
+			load: function(){},
+			abort: function(){
+				if(this.timeout != null){
+					clearTimeout(this.timeout);
+					this.timeout = null;
+				}
+				this.container.stop(true, false);
+				this.animating = false;
+			},
+			animate: function(){
+				if(!this.animating){
+					var _self = this;
+					this.abort();
+					this.animating = true;
+					if(this.delay == null){
+						this.doAnimation();
+					}
+					else{
+						var _self = this;
+						this.timeout = setTimeout(function(){
+							_self.doAnimation();
+						}, this.delay);
+					}
+				}
+			},
+			doAnimation: function(){
+				this.element.stop(true, true).animate(this.to_data, this.interval, this.easing, function(){
+					_self.animationCallback();
+				});
+			},
+			animationCallback: function(){
+				if(this.reset_on_complete){
+					this.reset();
+				}
+				this.complete();
+				this.animating = false;
+			},
+			complete: function(){},
+			initParentContainer: function(){
+				if(this.to_parent_container){
+					this.parent_container = this.container.parent();
+					this.parent_container.css({
+						position: 'relative'
+					});
+				}
+			},
+			getData: function(name){
+				var data = {};
+				var animations = ["left", "top", "opacity"];
+				for(var i=0; i<animations.length; ++i){
+					var key = 'data-' + name + '-' + animations[i];
+					var val = parseInt(this.container.attr(key));
+					if(!isNaN(val) && isFinite(val)){
+						data[animations[i]] = val;
+					}
+				}
+				return data;
+			},
+			initContainer: function(){
+				this.dimensions = {
+					width: this.container.width(),
+					height: this.container.height()
+				};
+				this.from_data = this.getData('from');
+				this.to_data = this.getData('to');
+			}
+		}, opts);
+		_self.init();
+		return _self;
+	}
+})(jQuery);

@@ -1,0 +1,14 @@
+.fmx_slider{
+	.fmx_slider_not_found_label{
+		display: none;
+	}
+	.fmx_slider_navigation{
+		display: none;
+		position: absolute;
+		img{
+			display: block;
+			position: absolute;
+			left: 0px;
+		}
+	}
+}

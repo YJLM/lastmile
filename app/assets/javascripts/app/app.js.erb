@@ -102,6 +102,16 @@ $.extend(app, {
 			return $.fmx_tabs(
 				$.extend(opts, config.fmx.tabs())
 			);
+		},
+		slider: function(opts){
+			return $.fmx_slider(
+				$.extend(opts, config.fmx.slider(), this.root.getTouchOpts())
+			);
+		},
+		coord_sprite: function(opts){
+			return $.fmx_coord_sprite(
+				$.extend(opts, config.fmx.coord_sprite())
+			);
 		}
 	}
 });

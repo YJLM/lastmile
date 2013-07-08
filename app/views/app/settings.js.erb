@@ -25,6 +25,24 @@ $.extend(config, {
 				
 			}, lang.fmx.tabs());
 			return opts;
+		},
+		slider: function(){
+			var opts = {};
+			$.extend(opts, {
+				intervals: {
+					color: 500,
+					idle: 5000,
+					ttl: 5000
+				}
+			}, lang.fmx.slider());
+			return opts;
+		},
+		coord_sprite: function(){
+			var opts = {};
+			$.extend(opts, {
+				
+			}, lang.fmx.coord_sprite());
+			return opts;
 		}
 	}
 });

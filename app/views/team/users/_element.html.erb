@@ -1,0 +1,25 @@
+<% 
+#18.times do 
+%>
+<div class="team_user">
+	<div class="team_user_col left">
+		<div class="team_user_pic" data-src="<%= image_url el.pic %>"></div>
+	</div>
+	<div class="team_user_col right">
+		<div class="team_user_info">
+			<div class="team_user_label main"><%= el.name %></div>
+			<div class="team_user_label gray"><%= el.role %></div>
+			<div class="team_user_label blue"><%= el.organization_name %></div>
+		</div>
+		<div class="team_user_social">
+			<%= render partial: 'team/users/social_link', locals: { key: 'facebook', el: el  } %>
+			<%= render partial: 'team/users/social_link', locals: { key: 'twitter', el: el  } %>
+			<%= render partial: 'team/users/social_link', locals: { key: 'mail', el: el  } %>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>
+<% 
+#end 
+%>

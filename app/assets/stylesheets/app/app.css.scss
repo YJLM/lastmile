@@ -5,6 +5,34 @@ body{
 }
 #container{
 	min-width: 960px;
+	.button{
+		@include background-gradient(#36B1F9, #1370A8);
+		@include text-shadow(1px, 1px, 1px, rgba(0, 0, 0, 0.85));
+		@include border-radius(3px, 3px, 3px, 3px);
+		border: 0 none;
+		color: #FFFFFF;
+		font-size: 15px;
+		padding: 10px 15px;
+		cursor: pointer;
+	}
+	h1.not_found{
+		color: #AAAAAA;
+		font-size: 12px;
+		padding: 20px 0;
+		text-align: center;
+	}
+	h1.view_title{
+		color: #AAAAAA;
+		font-size: 25px;
+		margin: 0 0 15px 0;
+		display: block;
+	}
+	h2{
+		color: #353535;
+		font-size: 16px;
+		display: block;
+		font-weight: 600;
+	}
 	.centered_content{
 		width: 960px;
 		margin: 0 auto;
@@ -81,20 +109,19 @@ body{
 		top: -25px;
 	}
 	#wrapper{
-		padding: 50px 0;
+		margin: 50px 0;
 		overflow: hidden;
 		.wrapper_col{
 			float: left;
-			min-height: 300px;
-			margin: 0 0 -8000px;
-			padding: 0 0 8000px;
+			margin: 0 0 -8000px 0;
+			padding: 0 0 8000px 0;
 		}
 		#wrapper_left_col{
-			width: 360px;
+			width: 410px;
 			border-right: 1px solid #EAEAEA;
 		}
 		#wrapper_right_col{
-			width: 595px;
+			width: 525px;
 		}
 		.wrapper_col_inner{
 			padding: 20px 30px;
@@ -105,7 +132,7 @@ body{
 			display: block;
 			border: 0 none;
 			outline: none;
-			margin: 0 0 15px 0;
+			margin: 0 0 10px 0;
 		}
 		a#wrapper_logo img{
 			width: 300px;
@@ -115,10 +142,10 @@ body{
 			outline: none;
 		}
 		#wrapper_info{
-			color: #898989;
+			color: $base-font-color;
 			font-size: 11px;
 			line-height: 1.8em;
-			margin: 0 0 5px 0;
+			margin: 0 0 20px 0;
 			p{
 				margin: 0 0 10px 0;
 			}
@@ -127,7 +154,31 @@ body{
 			@include border-radius(3px, 3px, 3px, 3px);
 			display: block;
 			float: left;
+			border: 0 none;
 			outline: none;
+			padding: 4px 25px;
+			margin: 0 30px;
+		}
+		a.wrapper_button{
+			&.blue{
+				@include background-gradient(#36B1F9, #1370A8);
+				&:hover{
+					@include background-gradient(#4CC6FF, #0078B0);
+				}
+			}
+			&.green{
+				@include background-gradient(#98D463, #66891D);
+				&:hover{
+					@include background-gradient(#9DDA67, #70971F);
+				}
+			}
+			img{
+				display: block;
+				border: 0 none;
+				outline: none;
+				width: 60px;
+				height: 60px;
+			}
 		}
 	}
 	#footer{

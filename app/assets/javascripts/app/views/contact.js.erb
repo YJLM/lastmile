@@ -1,0 +1,21 @@
+(function(){
+	$(function(){
+		app.contact = {};
+		$.extend(app.contact, {
+			parent: app,
+			root: null,
+			container: null,
+			init: function(){
+				this.initRoot();
+				this.initContainer();
+			},
+			initContainer: function(){
+				this.container = this.root.container.find('#contact');
+			},
+			initRoot: function(){
+				this.root = this.parent.root;
+			}
+		});
+		app.contact.init();
+	});
+})(jQuery);

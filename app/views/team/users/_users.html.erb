@@ -1,0 +1,10 @@
+<div id="team_users">
+<% if users.empty? %>
+	<h1 class="not_found"><%= t 'app.views.team.labels.not_found' %></h1>
+<% else %>
+	<% users.each do |user| %>
+		<%= render partial: 'team/users/element', locals: { el: user } %>
+	<% end %>
+	<div class="clear"></div>
+<% end %>
+</div>

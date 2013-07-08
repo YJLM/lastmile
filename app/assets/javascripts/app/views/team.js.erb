@@ -1,0 +1,34 @@
+(function(){
+	$(function(){
+		app.team = {};
+		$.extend(app.team, {
+			parent: app,
+			root: null,
+			container: null,
+			init: function(){
+				this.initRoot();
+				this.initContainer();
+				this.initCoordSprites();
+			},
+			initCoordSprites: function(){
+				var _self = this;
+				var elements = this.container.find('.team_user_pic');
+				elements.each(function(){
+					_self.addCoordSprite($(this));
+				});
+			},
+			addCoordSprite: function(container){
+				this.root.fmx.coord_sprite({
+					container: container
+				});
+			},
+			initContainer: function(){
+				this.container = this.root.container.find('#team');
+			},
+			initRoot: function(){
+				this.root = this.parent.root;
+			}
+		});
+		app.team.init();
+	});
+})(jQuery);
