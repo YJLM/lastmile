@@ -71,6 +71,26 @@ Lastmile::Application.configure do
 
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
+  
+  # Precompile all assets
+  config.assets.precompile << Proc.new do |path|
+    if path =~ /\.(css|js|css.erb|js.erb)\z/
+      full_path = Rails.application.assets.resolve(path).to_path
+      app_assets_path = Rails.root.join('app', 'assets').to_path
+      vendor_assets_path = Rails.root.join('vendor', 'assets').to_path
+      lib_assets_path = Rails.root.join('lib', 'assets').to_path
+      if full_path.starts_with?(app_assets_path) || full_path.starts_with?(vendor_assets_path) || full_path.starts_with?(lib_assets_path)
+        puts "including asset: " + full_path
+        true
+      else
+        puts "excluding asset: " + full_path
+        false
+      end
+    else
+      false
+    end
+  end
+  
 
   # Disable automatic flushing of the log to improve performance.
   # config.autoflush_log = false
