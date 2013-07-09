@@ -37,7 +37,6 @@ en:
           title: 'About Us'
           content: 
            - "The team, directed by Dr. Edgar Blanco is composed of multidisciplinary and multicultural students. Two-thirds of the team traveled to different megacities to understand their unique characteristics and collect data. The remaining third of the team students collaborate to process, analyze and visualize the information presented."
-           - "These students collaborate to collect, process, analyze and visualize the information presented in this project. "
         labels:
           not_found: 'No team members.'
       features:
