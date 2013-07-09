@@ -4,7 +4,11 @@
 	<div id="team_about">
 		<div id="team_about_column" class="team_column">
 			<h2 id="team_about_column_title"><%= t 'app.views.team.about.title' %></h2>
-			<div id="team_about_column_content"><%= t 'app.views.team.about.content' %></div>
+			<div id="team_about_column_content">
+			<% _t('app.views.team.about.content').each do |el| %>
+				<p><%= el.html_safe %></p>
+			<% end %>
+			</div>
 		</div>
 		<div id="team_pic_column" class="team_column">
 			<%= image_tag 'app/pic/team.png', width: 160, height: 160 %>
