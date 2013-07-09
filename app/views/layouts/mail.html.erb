@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%= t "app.mail.title" %></title>
+	</head>
+	<body style="font-family: Helvetica, Arial, sans-serif; font-weigth: 300;" bgcolor="#F5F5F5" marginheight="0" marginwidth="0" topmargin="0" leftmargin="0">
+		<table borderspacing="0" borderpadding="0" border="0" bgcolor="#F5F5F5" cellspacing="0" cellpadding="0" width="550" style="border-collapse: collapse; margin: 0; padding: 0; border: 0; border-spacing: 0; background-color: #F5F5F5; margin: 0 auto;">
+			<tbody>
+				<tr>
+					<td border-top-width="1" border-top-color="#D9D9D9" border-bottom-width="1" border-bottom-color="#D9D9D9" border-left-width="1" border-left-color="#D9D9D9" border-right-width="1" border-right-color="#D9D9D9" style="background-color: #F3F3F3; padding: 12px 14px 12px 14px; border-left: 1px solid #D9D9D9; border-right: 1px solid #D9D9D9; border-bottom: 1px solid #D9D9D9; border-top: 1px solid #D9D9D9;" height="63" width="100%">
+						<a href="<%= url_for controller: :splash, action: :index, only_path: false %>" style="border: 0 none; outline: none;" target="_blank">
+							<%= abs_image_tag 'mail/header/header.png', width: 322, height: 63, style: 'border: 0 none; outline: none;' %>
+						</a>
+					</td>
+				</tr>
+				<tr>
+					<td bgcolor="#FFFFFF" style="background-color: #FFFFFF; font-size: 12px; border-bottom: 1px solid #D9D9D9; border-left: 1px solid #D9D9D9; border-right: 1px solid #D9D9D9;" border-bottom-width="1" border-bottom-color="#D9D9D9" border-left-width="1" border-left-color="#D9D9D9" border-right-width="1" border-right-color="#D9D9D9">
+						<table width="100%" border="0" cellspacing="0" cellpadding="0" style="padding: 10px 20px;">
+							<tbody>
+								<tr>
+									<td height="10">&nbsp;</td>
+								</tr>
+								<tr>
+									<td style="line-height: 1.5em; color: #454545;">
+										<%= yield %>
+									</td>
+								</tr>
+								<tr>
+									<td height="15">&nbsp;</td>
+								</tr>
+								<tr>
+									<td style="border-top: 1px solid #D9D9D9;" border-top-width="1" border-top-color="#D9D9D9" height="15">&nbsp;</td>
+								</tr>
+								<tr>
+									<td>
+										<p style="line-height: 1.2em; color: #A1A1A1; font-size: 10px;">
+											<%= t "app.mail.legal.legend" %>
+										</p>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td border-bottom-width="1" border-bottom-color="#D9D9D9" border-left-width="1" border-left-color="#D9D9D9" border-right-width="1" border-right-color="#D9D9D9" style="background-color: #F3F3F3; padding: 12px 14px 12px 14px; border-left: 1px solid #D9D9D9; border-right: 1px solid #D9D9D9; border-bottom: 1px solid #D9D9D9;" width="100%">
+						<table width="100%" border="0" cellspacing="0" cellpadding="0">
+							<tbody>
+								<tr>
+									<td>
+										<p style="color: #808181; font-size: 11px;">
+											<%= t "app.mail.footer.copyright" %>
+										</p>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</body>
+</html>

@@ -1,5 +1,8 @@
 en:
   fmx:
+    form:
+      labels:
+        upload_in_progress: 'File upload in progress. Please wait.'
     front:
       slider:
         labels:

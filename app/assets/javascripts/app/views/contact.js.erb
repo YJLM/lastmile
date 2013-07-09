@@ -5,9 +5,75 @@
 			parent: app,
 			root: null,
 			container: null,
+			views: null,
 			init: function(){
 				this.initRoot();
 				this.initContainer();
+				this.initViews();
+			},
+			initViews: function(){
+				this.views = {};
+				$.extend(this.views, {
+					parent: this,
+					root: null,
+					container: null,
+					views: null,
+					success_view: null,
+					init: function(){
+						this.initRoot();
+						this.initContainer();
+						this.initViews();
+					},
+					initViews: function(){
+						this.views = this.container.find('.contact_view');
+						this.initSuccessView();
+						this.initForm();
+					},
+					initForm: function(){
+						var _self = this;
+						this.root.fmx.form({
+							container: this.container.find('#contact_form'),
+							loading: function(){
+								_self.formLoading();
+							},
+							loaded: function(){
+								_self.formLoaded();
+							},
+							error: function(){
+								_self.formError();
+							},
+							success: function(data){
+								_self.formSuccess(data);
+							}
+						});
+					},
+					formLoading: function(){
+						this.root.loading();
+					},
+					formLoaded: function(){
+						this.root.loaded();
+					},
+					formError: function(){
+						this.root.error();
+					},
+					formSuccess: function(data){
+						this.setView(this.success_view);
+					},
+					setView: function(which){
+						this.views.css('display', 'none');
+						which.css('display', 'block');
+					},
+					initSuccessView: function(){
+						this.success_view = this.views.filter('#contact_success_view');
+					},
+					initContainer: function(){
+						this.container = this.parent.container.find('#contact_container');
+					},
+					initRoot: function(){
+						this.root = this.parent.root;
+					}
+				});
+				this.views.init();
 			},
 			initContainer: function(){
 				this.container = this.root.container.find('#contact');

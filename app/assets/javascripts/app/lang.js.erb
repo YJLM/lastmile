@@ -47,6 +47,22 @@ $.extend(lang, {
 				
 			});
 			return opts;
+		},
+		form: function(){
+			var opts = {};
+			$.extend(opts, {
+				labels: {
+					upload_in_progress: '<%= t 'fmx.form.labels.upload_in_progress' %>'
+				}
+			});
+			return opts;
+		},
+		placeholder: function(){
+			var opts = {};
+			$.extend(opts, {
+				
+			});
+			return opts;
 		}
 	}
 });

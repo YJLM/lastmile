@@ -112,6 +112,16 @@ $.extend(app, {
 			return $.fmx_coord_sprite(
 				$.extend(opts, config.fmx.coord_sprite())
 			);
+		},
+		form: function(opts){
+			return $.fmx_form(
+				$.extend(opts, config.fmx.form())
+			);
+		},
+		placeholder: function(opts){
+			return $.fmx_placeholder(
+				$.extend(opts, config.fmx.placeholder())
+			);
 		}
 	}
 });

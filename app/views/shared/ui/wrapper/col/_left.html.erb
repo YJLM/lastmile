@@ -9,10 +9,10 @@
 			<% end %>
 		</div>
 		<div id="wrapper_buttons">
-			<a href="#" class="wrapper_button blue">
+			<a href="<%= url_for Settings.get('elements.km2') %>" class="wrapper_button blue" target="_blank">
 				<%= image_tag 'app/icons/buttons/splash/km2.png', width: 60, height: 60 %>
 			</a>
-			<a href="#" class="wrapper_button green">
+			<a href="<%= url_for Settings.get('elements.loopa') %>" class="wrapper_button green" target="_blank">
 				<%= image_tag 'app/icons/buttons/splash/loopa.png', width: 60, height: 60 %>
 			</a>
 			<div class="clear"></div>

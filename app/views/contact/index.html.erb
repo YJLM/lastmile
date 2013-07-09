@@ -35,7 +35,7 @@
 						<div class="clear"></div>
 					</div>
 					<div class="field_wrapper top_margin">
-						<div class="field no_border">
+						<div class="field">
 							<div class="field_container">
 								<%= f.text_area :message, placeholder: t('app.views.contact.fields.message') %>
 							</div>
@@ -49,7 +49,11 @@
 			<% end %>
 		</div>
 		<div id="contact_success_view" class="contact_view">
-			
+			<div id="contact_success_header">
+				<h1 id="contact_success_title"><%= t 'app.views.contact.success.title' %></h1>
+				<div class="clear"></div>
+			</div>
+			<p id="contact_success_legend"><%= t 'app.views.contact.success.legend' %></p>
 		</div>
 	</div>
 </div>

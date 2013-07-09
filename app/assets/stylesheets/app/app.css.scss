@@ -5,7 +5,7 @@ body{
 }
 #container{
 	min-width: 960px;
-	.button{
+	@include link('.button') {
 		@include background-gradient(#36B1F9, #1370A8);
 		@include text-shadow(1px, 1px, 1px, rgba(0, 0, 0, 0.85));
 		@include border-radius(3px, 3px, 3px, 3px);
@@ -14,6 +14,15 @@ body{
 		font-size: 15px;
 		padding: 10px 15px;
 		cursor: pointer;
+	}
+	.button:hover{
+		@include background-gradient(#36B1F9, #0D5580);
+	}
+	@include link('.button.disabled') {
+		@include background-gradient(#36B1F9, #1370A8);
+		@include text-shadow(0px, 0px, 0px, #000000);
+		color: #2272A1;
+		cursor: auto;
 	}
 	h1.not_found{
 		color: #AAAAAA;

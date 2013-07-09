@@ -22,6 +22,20 @@ module Lastmile
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
     config.i18n.default_locale = :en
     config.assets.paths << Rails.root.join("lib", "assets")
+    
+    # mail config
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      address: 'smtp.gmail.com',
+      port: 587,
+      domain: 'feathermexico.com',
+      user_name: 'no-reply@feathermexico.com',
+      password: '*Qn39gFd1',
+      authentication: 'plain',
+      enable_starttls_auto: true
+    }
+    config.action_mailer.raise_delivery_errors = true
+    
   end
 end
 

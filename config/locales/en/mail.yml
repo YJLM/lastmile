@@ -1,0 +1,23 @@
+en:
+  app:
+    mail:
+      title: 'last mile'
+      legal:
+        legend: 'The information in this email and any attachments may contain proprietary and confidential information that is intended for the addressee(s) only. If you are not the intended recipient, you are hereby notified that any disclosure, copying, distribution, retention or use of the contents of this information is prohibited. When addressed to our clients or vendors, any information contained in this e-mail or any attachments is subject to the terms and conditions in any governing contract. If you have received this e-mail in error, please immediately contact the sender and delete the e-mail.'
+      footer:
+        copyright: 'MIT CTL &copy; 2013. All Rights Reserved'
+      views:
+        contact:
+          title: 'Contact'
+          legend: 'A contact form was filled with the following info:'
+          fields:
+            name: 'Name'
+            mail: 'Mail'
+            organization: 'Organization'
+            subject: 'Subject'
+            message: 'Message'
+        contact_confirmation:
+          title: 'Contact Confirmation'
+          elements:
+           - 'Thanks for contacting the last mile team.'
+           - "We will contact you shortly."

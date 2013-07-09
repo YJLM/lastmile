@@ -1,0 +1,22 @@
+<p>
+	<%= t "app.mail.views.contact.legend" %>
+</p>
+<p>
+	<strong><%= t "app.mail.views.contact.fields.name" %>:</strong> <%= @form.name %>
+</p>
+<p>
+	<strong><%= t "app.mail.views.contact.fields.mail" %>:</strong> <%= @form.mail %>
+</p>
+<% unless @form.organization.blank? %>
+	<p>
+		<strong><%= t "app.mail.views.contact.fields.organization" %>:</strong> <%= @form.organization %>
+	</p>
+<% end %>
+<% unless @form.subject.blank? %>
+	<p>
+		<strong><%= t "app.mail.views.contact.fields.subject" %>:</strong> <%= @form.subject %>
+	</p>
+<% end %>
+<p>
+	<strong><%= t "app.mail.views.contact.fields.message" %>:</strong> <%= @form.message %>
+</p>

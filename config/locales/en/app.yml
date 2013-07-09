@@ -1,6 +1,6 @@
 en:
   app:
-    title: 'Last Mile'
+    title: 'last mile'
     messages:
       loading: 'Loading'
       error: 'There was an error. Please try again later.'
@@ -50,3 +50,6 @@ en:
           message: 'Message'
         actions:
           submit: 'Send'
+        success:
+          title: 'Message sent'
+          legend: 'Thanks for sending us a message. We will contact you shortly.'
