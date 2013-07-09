@@ -104,8 +104,10 @@
 					if(this.active != null) this.active.disable();
 					this.active = which;
 					this.active.enable();
+					this.change(this.active);
 				}
 			},
+			change: function(which){},
 			setHash: function(which){
 				window.location = '#' + this.separator.url + which.url;
 			},

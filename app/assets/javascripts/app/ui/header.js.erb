@@ -27,8 +27,14 @@
 					},
 					error: function(){
 						_self.tabsError();
+					},
+					change: function(which){
+						_self.tabsChange(which);
 					}
 				});
+			},
+			tabsChange: function(which){
+				ga('send', 'pageview', which.url);
 			},
 			tabsLoading: function(){
 				this.root.loading();
