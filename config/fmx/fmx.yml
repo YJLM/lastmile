@@ -19,4 +19,4 @@ production:
     to: 'no-reply@feathermexico.com'
   elements:
     km2: '/km2'
-    loopa: '/loopa'
+    loopa: '/loopa/'
