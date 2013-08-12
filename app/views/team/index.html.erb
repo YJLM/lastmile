@@ -1,19 +1,24 @@
-<%= javascript_include_tag 'app/views/team' %>
+<% content_for :head do %>
+	<%= stylesheet_link_tag 'app/views/team' %>
+	<%= javascript_include_tag 'app/views/team' %>
+<% end %>
 <div id="team">
-	<h1 class="view_title"><%= t 'app.views.team.title' %></h1>
-	<div id="team_about">
-		<div id="team_about_column" class="team_column">
-			<h2 id="team_about_column_title"><%= t 'app.views.team.about.title' %></h2>
-			<div id="team_about_column_content">
-			<% _t('app.views.team.about.content').each do |el| %>
-				<p><%= el.html_safe %></p>
-			<% end %>
+	<div id="team_wrapper" class="inner_content">
+		<h1 class="view_title"><%= t 'app.views.team.title' %></h1>
+		<div id="team_about">
+			<div id="team_about_column" class="team_column">
+				<h2 id="team_about_column_title"><%= t 'app.views.team.about.title' %></h2>
+				<div id="team_about_column_content">
+				<% _t('app.views.team.about.content').each do |el| %>
+					<p><%= el.html_safe %></p>
+				<% end %>
+				</div>
 			</div>
+			<div id="team_pic_column" class="team_column">
+				<%= image_tag 'app/pic/team.png', width: 160, height: 160 %>
+			</div>
+			<div class="clear"></div>
 		</div>
-		<div id="team_pic_column" class="team_column">
-			<%= image_tag 'app/pic/team.png', width: 160, height: 160 %>
-		</div>
-		<div class="clear">
 	</div>
-	<%= render partial: 'team/users/users', locals: { users: @team } %>
+	<%= render partial: 'team/users/users', locals: { users: @users } %>
 </div>

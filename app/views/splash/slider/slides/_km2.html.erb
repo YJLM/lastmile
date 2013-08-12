@@ -1,0 +1,25 @@
+<div class="splash_slide" id="km2_slide" data-color="#2854A1">
+	<div class="slide_element background" data-src="<%= image_url 'app/slider/km2/bg.png' %>" data-from-opacity="0" data-to-opacity="1" width="465" height="330" data-interval="800" data-delay="500"></div>
+	<div id="km2_slide_logo" class="slide_element" data-src="<%= image_url 'app/slider/km2/logo.png' %>" data-from-top="330" data-to-top="262" width="98" height="57" data-interval="800" data-delay="1200" data-easing="easeOutExpo"></div>
+	<div id="km2_slide_tablet" class="slide_element" data-src="<%= image_url 'app/slider/km2/tablet.png' %>" data-from-top="-285" data-to-top="26" width="162" height="283" data-interval="800" data-delay="1700" data-easing="easeOutExpo"></div>
+	<div id="km2_slide_title" class="slide_element" data-from-top="-70" data-to-top="17" data-interval="800" data-delay="2100" data-easing="easeOutExpo">
+	<% _t('app.views.splash.slider.km2.title').each do |el| %>
+		<span><%= el.html_safe %></span>
+	<% end %>
+	</div>
+	<div id="km2_slide_info_tag0" class="slide_element km2_slide_info" data-from-top="-20" data-to-top="100" data-interval="800" data-delay="2800" data-easing="easeOutExpo">
+		<%= image_tag 'app/slider/km2/bullet.png', width: 13, height: 13, class: 'km2_slide_info_bullet' %>
+		<div class="km2_slide_info_label"><%= t 'app.views.splash.slider.km2.tag0' %></div>
+		<div class="clear"></div>
+	</div>
+	<div id="km2_slide_info_tag1" class="slide_element km2_slide_info" data-from-top="-20" data-to-top="140" data-interval="800" data-delay="3300" data-easing="easeOutExpo">
+		<%= image_tag 'app/slider/km2/bullet.png', width: 13, height: 13, class: 'km2_slide_info_bullet' %>
+		<div class="km2_slide_info_label"><%= t 'app.views.splash.slider.km2.tag1' %></div>
+		<div class="clear"></div>
+	</div>
+	<div id="km2_slide_info_tag2" class="slide_element km2_slide_info" data-from-top="-20" data-to-top="180" data-interval="800" data-delay="3800" data-easing="easeOutExpo">
+		<%= image_tag 'app/slider/km2/bullet.png', width: 13, height: 13, class: 'km2_slide_info_bullet' %>
+		<div class="km2_slide_info_label"><%= t 'app.views.splash.slider.km2.tag2' %></div>
+		<div class="clear"></div>
+	</div>
+</div>

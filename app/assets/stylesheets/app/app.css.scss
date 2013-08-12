@@ -6,8 +6,7 @@ body{
 #container{
 	min-width: 960px;
 	@include link('.button') {
-		@include background-gradient(#36B1F9, #1370A8);
-		@include text-shadow(1px, 1px, 1px, rgba(0, 0, 0, 0.85));
+		@include background-gradient($base-from, $base-to);
 		@include border-radius(3px, 3px, 3px, 3px);
 		border: 0 none;
 		color: #FFFFFF;
@@ -16,11 +15,10 @@ body{
 		cursor: pointer;
 	}
 	.button:hover{
-		@include background-gradient(#36B1F9, #0D5580);
+		@include background-gradient($base-from, $base-hover);
 	}
 	@include link('.button.disabled') {
 		@include background-gradient(#36B1F9, #1370A8);
-		@include text-shadow(0px, 0px, 0px, #000000);
 		color: #2272A1;
 		cursor: auto;
 	}
@@ -60,8 +58,9 @@ body{
 			margin: 30px 15px 0 0;
 			height: 30px;
 			position: relative;
+			display: none;
 			#header_menu_active{
-				display: block;
+				display: none;
 				position: absolute;
 				width: 24px;
 				height: 10px;
@@ -133,7 +132,10 @@ body{
 			width: 525px;
 		}
 		.wrapper_col_inner{
-			padding: 20px 30px;
+			padding: 20px 0;
+		}
+		.inner_content{
+			padding: 0 30px;
 		}
 		@include link('a#wrapper_logo') {
 			width: 300px;

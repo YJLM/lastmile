@@ -4,46 +4,69 @@
 		$.extend(app.header, {
 			parent: app,
 			root: null,
+			view: null,
 			container: null,
 			init: function(){
 				this.initRoot();
+				this.initView();
 				this.initContainer();
-				this.initTabs();
+				this.initMenu();
+			},
+			initMenu: function(){
+				var menu = {};
+				$.extend(menu, {
+					parent: this,
+					root: null,
+					container: null,
+					active_div: null,
+					init: function(){
+						this.initRoot();
+						this.initView();
+						this.initContainer();
+						this.show();
+					},
+					initContainer: function(){
+						this.container = this.view.container.find('#header_menu');
+						this.container.css({
+							display: 'block',
+							opacity: 0
+						});
+						this.initActiveDiv();
+						this.setActive();
+					},
+					setActive: function(){
+						var active = this.container.find('a.header_menu_element.active');
+						if(active.length > 0){
+							var active_width = this.active_div.outerWidth();
+							var position = active.position();
+							var width = active.outerWidth();
+							var left = position.left + ((width - active_width) / 2);
+							this.active_div.css({
+								display: 'block',
+								left: left
+							});
+						}
+					},
+					initActiveDiv: function(){
+						this.active_div = this.container.find('#header_menu_active');
+					},
+					show: function(){
+						this.container.css('opacity', 1);
+					},
+					initRoot: function(){
+						this.root = this.parent.root;
+					},
+					initView: function(){
+						this.view = this.parent.view;
+					}
+				});
+				menu.init();
 			},
 			initRoot: function(){
 				this.root = this.parent.root;
 			},
-			initTabs: function(){
-				var _self = this;
-				this.root.fmx.tabs({
-					container: this.root.container.find('#content'),
-					triggers: this.container.find('.header_menu_element'),
-					active_div: this.container.find('#header_menu_active'),
-					loading: function(){
-						_self.tabsLoading();
-					},
-					loaded: function(){
-						_self.tabsLoaded();
-					},
-					error: function(){
-						_self.tabsError();
-					},
-					change: function(which){
-						_self.tabsChange(which);
-					}
-				});
-			},
-			tabsChange: function(which){
-				ga('send', 'pageview', which.url);
-			},
-			tabsLoading: function(){
-				this.root.loading();
-			},
-			tabsLoaded: function(){
-				this.root.loaded();
-			},
-			tabsError: function(){
-				this.root.error();
+			initView: function(){
+				this.view = this;
 			},
 			initContainer: function(){
 				this.container = this.root.container.find('#header');

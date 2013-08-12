@@ -1,28 +1,30 @@
 en:
   app:
     title: 'last mile'
+    description: 'Last Mile is a project focused on visualizing information relevant to logistic operations in different contexts, collecting and displaying urban and corporate information. Last Mile is composed of two different platforms: km2 and loopa.'
+    tags: 'km2,loopa,last mile,logistics,mit ctl,visualization,interactive data,MIT,lastmile,megacities,urban logistics,logistic atlas,square kilometer,urban factors,shop inventory,loading/unloading,deliveries,traffic counts,disruptions'
     messages:
       loading: 'Loading'
       error: 'There was an error. Please try again later.'
     social_links:
-      facebook: 'https://www.facebook.com/pages/Feather-México/254651244564796'
-      twitter: 'https://twitter.com/FeatherMexico'
-      mail: 'mailto:contact@mit.edu'
+      facebook: 'https://www.facebook.com/mitctl'
+      twitter: 'https://twitter.com/mitsupplychain'
+      mail: 'mailto:megacitylab-km2@mit.edu'
     menu:
-      home: 'Home'
+      splash: 'Home'
       team: 'Team'
-      features: 'Features'
+      about: 'Case Study'
       contact: 'Contact'
     wrapper:
       left:
         content:
-         - "Last Mile is a project focused on visualizing information relevant to logistic operations in different contexts, collecting and displaying urban and corporate information. Last Mile is composed of two different platforms: km2 and loopa"
+         - "Last Mile is a project focused on visualizing information relevant to logistic operations in different contexts, collecting and displaying urban and corporate information. Last Mile is composed of two different platforms: km2 and loopa."
          - "The goal of km2 is to characterize areas of some of the world’s major megacities and observe their dynamics and conditions to obtain valuable information about factors that have influence over urban logistics performance. This is done using system designed for this purpose that allows easy visualization of the data. "
          - "Loopa is a tool that allows the user to map and observe the operations of a distribution network of a company. The tool allows the easy visualization of data and provides analytical insight that enables the observer to understand the behavior of the customers and the demand in the specified region. "
     footer:
       copyright: 'MIT CTL &copy; 2013. All Rights Reserved'
     views:
-      home:
+      splash:
         slider:
           km2:
             title: ['Megacity', 'Data']
@@ -39,8 +41,20 @@ en:
            - "The team, directed by Dr. Edgar Blanco is composed of multidisciplinary and multicultural students. Two-thirds of the team traveled to different megacities to understand their unique characteristics and collect data. The remaining third of the team students collaborate to process, analyze and visualize the information presented."
         labels:
           not_found: 'No team members.'
-      features:
-        title: 'Features'
+      about:
+        title: 'Megacity Challenges'
+        elements:
+          area:
+            label: '10M'
+            content: 'Megacities are cities or major urban areas with populations over 10 million inhabitants. Most megacities are commonly located in developing nations and rapidly emerging markets. These cities will continue to expand both in population and area growth.'
+          gdp:
+            label: 'GDP'
+            content: 'Thirty-one megacities around the world represent almost 15% of the global GDP and are expected to increase to 20% of the global GDP in the next 10 years.'
+          population:
+            label: '20k'
+            content: 'Population densities in emerging markets like Mumbai can be as high as 20,000 inhabitants per square kilometer. This density is more than double than that of London or Manhattan. In these cities, development is rapid which places stress on existing transportation infrastructure.'
+        actions:
+          download: 'Download PDF'
       contact:
         title: 'Contact'
         label: 'For general questions, bug reports or press inquires please fill out the form below.'

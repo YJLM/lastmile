@@ -1,0 +1,27 @@
+(function(){
+	$(function(){
+		var el = app.splash = {};
+		$.extend(el, {
+			parent: app,
+			root: null,
+			container: null,
+			init: function(){
+				this.initRoot();
+				this.initContainer();
+				this.initSlider();
+			},
+			initSlider: function(){
+				this.root.fmx.slider({
+					container: this.container.find('#splash_slider')
+				});
+			},
+			initContainer: function(){
+				this.container = this.root.container.find('#splash');
+			},
+			initRoot: function(){
+				this.root = this.parent.root;
+			}
+		});
+		el.init();
+	});
+})(jQuery);

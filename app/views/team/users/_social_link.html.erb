@@ -1,5 +1,6 @@
 <% val = el.send(key) %>
 <% unless val.blank? %>
+	<% val = "mailto:#{val}" if mail %>
 	<% img_src = "app/icons/social/#{key}.png" %>
 	<a class="team_user_social_link" href="<%= val %>" target="_blank">
 		<%= image_tag img_src, width: 15, height: 30 %>

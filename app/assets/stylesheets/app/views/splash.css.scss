@@ -1,0 +1,130 @@
+@import 'shared.css.scss';
+#splash{
+	#splash_slider{
+		width: 100%;
+		height: 330px;
+		background-color: #E4E4E4;
+		background-repeat: repeat;
+		background-position: 0 0;
+		background-image: none;
+		overflow: hidden;
+		position: relative;
+	}
+	.splash_slider_loader{
+		width: 20px;
+		height: 20px;
+		overflow: hidden;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		margin-left: -10px;
+		margin-top: -10px;
+	}
+	#splash_slider_inner_wrapper{
+		width: 465px;
+		height: 330px;
+		position: absolute;
+		top: 0px;
+		left: 50%;
+		margin-left: -232px;
+	}
+	.splash_slide{
+		position: absolute;
+		display: none;
+		width: 100%;
+		height: 330px;
+		.slide_element{
+			position: absolute;
+			&.background{
+				width: 465px;
+				height: 330px;
+				top: 0px;
+				left: 0px;
+				z-index: 3998;
+			}
+		}
+		.slide_center_wrapper{
+			position: absolute;
+			width: 465px;
+			height: 330px;
+			left: 50%;
+			top: 0px;
+			margin-left: -232px;
+		}
+		&#km2_slide{
+			#km2_slide_logo{
+				width: 98px;
+				height: 57px;
+				left: 14px;
+				z-index: 3999;
+			}
+			#km2_slide_tablet{
+				width: 162px;
+				height: 283px;
+				left: 260px;
+				z-index: 3999;
+			}
+			#km2_slide_title{
+				color: #FFFFFF;
+				width: 259px;
+				line-height: 1.3em;
+				font-size: 25px;
+				text-align: center;
+				z-index: 3999;
+				left: 0px;
+				font-weight: $bold;
+				span{
+					display: block;
+				}
+			}
+			.km2_slide_info{
+				z-index: 3999;
+				&#km2_slide_info_tag0{
+					left: 50px;
+				}
+				&#km2_slide_info_tag1{
+					left: 70px;
+				}
+				&#km2_slide_info_tag2{
+					left: 90px;
+				}
+				.km2_slide_info_label{
+					display: block;
+					width: 190px;
+					float: left;
+					font-size: 13px;
+					color: #FFFFFF;
+				}
+				.km2_slide_info_bullet{
+					margin: 2px 3px 0 0;
+					width: 13px;
+					height: 13px;
+					float: left;
+					display: block;
+				}
+			}
+		}
+		&#loopa_slide{
+			#loopa_slide_logo{
+				width: 122px;
+				height: 59px;
+				left: 12px;
+				z-index: 3999;
+			}
+			#loopa_slide_earth{
+				width: 169px;
+				height: 172px;
+				top: 86px;
+				z-index: 3999;
+			}
+			#loopa_slide_tag{
+				color: #FFFFFF;
+				width: 345px;
+				z-index: 3999;
+				line-height: 1.3em;
+				font-size: 12px;
+				left: 20px;
+			}
+		}
+	}
+}

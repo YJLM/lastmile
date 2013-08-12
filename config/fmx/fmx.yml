@@ -16,7 +16,7 @@ production:
   mail:
     assets_host: 'lastmile.mit.edu'
     from: 'no-reply@feathermexico.com'
-    to: 'no-reply@feathermexico.com'
+    to: 'megacitylab-km2@mit.edu'
   elements:
     km2: '/km2'
     loopa: '/loopa/'

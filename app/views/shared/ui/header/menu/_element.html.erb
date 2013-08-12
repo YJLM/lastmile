@@ -1,4 +1,6 @@
 <% lang_key = "app.menu.#{el[:key]}" %>
-<a href="<%= url_for el[:url] %>" class="header_menu_element">
+<% active_cls = '' %>
+<% active_cls = ' active' if el[:key] == @active_menu  %>
+<a href="<%= url_for el[:url] %>" class="header_menu_element<%= active_cls %>">
 	<%= t lang_key %>
 </a>

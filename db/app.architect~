@@ -4,8 +4,8 @@
  <print-settings numCopies="1" zoom="1.0" pageNumbersPrinted="true" orientation="1" paperWidth="612.0" paperHeight="792.0" leftBorder="50.0" rightBorder="50.0" topBorder="50.0" bottomBorder="50.0" />
  <project-data-sources>
   <data-source id="DS0">
-   <property key="Logical" value="lastmile" />
    <property key="Connection Type" value="PostgreSQL" />
+   <property key="Logical" value="PlayPen Database" />
    <property key="JDBC URL" value="jdbc:postgresql://localhost:5432/lastmile" />
    <property key="UID" value="lastmile" />
    <property key="PWD" value="beans" />
@@ -16,8 +16,8 @@
    <property key="ca.sqlpower.architect.etl.kettle.repos.password" value="" />
   </data-source>
   <data-source id="DS0">
-   <property key="Logical" value="lastmile" />
    <property key="Connection Type" value="PostgreSQL" />
+   <property key="Logical" value="PlayPen Database" />
    <property key="JDBC URL" value="jdbc:postgresql://localhost:5432/lastmile" />
    <property key="UID" value="lastmile" />
    <property key="PWD" value="beans" />
@@ -29,7 +29,7 @@
   </data-source>
  </project-data-sources>
  <source-databases>
-  <database id="DB0" populated="true" UUID="6fbca271-9d37-424d-ab87-a2963434e528" dbcs-ref="DS0" name="lastmile" physicalName="lastmile" >
+  <database id="DB0" populated="true" UUID="6fbca271-9d37-424d-ab87-a2963434e528" dbcs-ref="DS0" name="PlayPen Database" physicalName="lastmile" >
    <catalog id="CAT1" populated="false" UUID="a47fe37d-a5c4-4b6b-adbc-f48094f20d86" name="lastmile" nativeTerm="database" physicalName="lastmile" >
    </catalog>
    <relationships>
@@ -40,7 +40,7 @@
   <table id="TAB3" populated="true" UUID="1dc862de-1a42-4f9f-b891-3388d3790409" name="users" objectType="TABLE" physicalName="users" >
    <remarks></remarks>
    <folder id="FOLTAB31" populated="true" name="Columns" physicalName="Columns" type="1">
-    <column id="COL4" populated="true" UUID="8a446ebc-6316-471a-879b-8650fd705e4f" autoIncrement="true" autoIncrementSequenceName="users_id_seq" defaultValue="" name="id" nullable="0" physicalName="id" precision="0" primaryKeySeq="0" referenceCount="2" scale="0" sourceDataTypeName="UserDefinedSQLType" type="-5" userDefinedTypeUUID="433cc8af-284d-4abb-8ef7-08ebcb34dbf1" >
+    <column id="COL4" populated="true" UUID="8a446ebc-6316-471a-879b-8650fd705e4f" autoIncrement="false" autoIncrementSequenceName="users_id_seq" defaultValue="" name="id" nullable="0" physicalName="id" precision="0" primaryKeySeq="0" referenceCount="2" scale="0" sourceDataTypeName="UserDefinedSQLType" type="-5" userDefinedTypeUUID="433cc8af-284d-4abb-8ef7-08ebcb34dbf1" >
      <remarks></remarks>
     </column>
     <column id="COL5" populated="true" UUID="f1a22e88-0fd9-4de5-8a47-64c67ca9a3b8" autoIncrement="false" autoIncrementSequenceName="users_organization_id_seq" defaultValue="" name="organization_id" nullable="0" physicalName="organization_id" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="-5" userDefinedTypeUUID="433cc8af-284d-4abb-8ef7-08ebcb34dbf1" >
@@ -142,7 +142,7 @@
    </relationship>
   </relationships>
  </target-database>
- <ddl-generator type="ca.sqlpower.architect.ddl.PostgresDDLGenerator" allow-connection="false" target-schema="public"> </ddl-generator>
+ <ddl-generator type="ca.sqlpower.architect.ddl.PostgresDDLGenerator" allow-connection="true" target-schema="public"> </ddl-generator>
  <liquibase-settings useSeparateChangeSets="false" generateId="false" idStart="1"/>
  <create-kettle-job-settings filePath="" jobName="" schemaName="" kettleJoinType="0" savingToFile="true" />
  <play-pen zoom="1.0" viewportX="0" viewportY="0" relationship-style="rectilinear" names-displayLogicalNames="true" showPrimaryTag="true" showForeignTag="true" showAlternateTag="true" columnVisibility="ALL" relationshipLabelVisibility="true">

@@ -1,9 +1,17 @@
 class TeamController < FrontController
   
-  before_filter :assert_ajax_post
+  before_filter :page_elements, only: [:index]
   
   def index
-    @team = Front::User.list
+    @users = Front::User.list
+    render layout: 'application'
   end
+  
+  protected
+  
+  def active_menu
+    @active_menu ||= :team
+  end
+  
   
 end

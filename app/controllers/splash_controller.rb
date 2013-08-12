@@ -6,4 +6,10 @@ class SplashController < FrontController
     render layout: 'application'
   end
   
+  protected
+  
+  def active_menu
+    @active_menu ||= :splash
+  end
+  
 end

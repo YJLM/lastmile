@@ -6,21 +6,26 @@ class FrontController < ApplicationController
   
   def page_elements
     @menu = self.class.menu
+    self.active_menu
+  end
+  
+  def active_menu
+    @active_menu ||= nil
   end
   
   def self.menu
     @@menu ||= [
       {
-        key: :home,
-        url: { controller: :home, action: :index }
+        key: :splash,
+        url: { controller: :splash, action: :index }
       },
       {
         key: :team,
         url: { controller: :team, action: :index }
       },
       {
-        key: :features,
-        url: { controller: :features, action: :index }
+        key: :about,
+        url: { controller: :about, action: :index }
       },
       {
         key: :contact,

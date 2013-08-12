@@ -1,0 +1,84 @@
+@import 'shared.css.scss';
+#about{
+	#about_elements{
+		border-top: 1px solid #E1E1E1;
+		border-left: 1px solid #E1E1E1;
+		display: block;
+	}
+	.about_element{
+		border-bottom: 1px solid #E1E1E1;
+		border-right: 1px solid #E1E1E1;
+		.about_element_icon_container{
+			display: block;
+			float: left;
+			width: 135px;
+			height: 120px;
+			border-right: 1px solid #E1E1E1;
+			background: none repeat scroll 0 0 #FBFBFB;
+			position: relative;
+			&.even{
+				background: none repeat scroll 0 0 #F6F6F6;
+			}
+		}
+		.about_element_icon_wrapper{
+			display: block;
+			position: absolute;
+			width: 80px;
+			height: 75px;
+			left: 50%;
+			top: 50%;
+			margin-left: -40px;
+			margin-top: -37.5px;
+		}
+		img.about_element_icon{
+			width: 80px;
+			height: 45px;
+			display: block;
+			margin: 0 0 5px 0;
+		}
+		h2.about_element_icon_label{
+			display: block;
+			width: 80px;
+			text-align: center;
+			color: #000000;
+			font-size: 25px;
+		}
+		.about_element_content{
+			padding: 5px 10px;
+			float: left;
+			width: 305px;
+			p{
+				color: #888888;
+				font-size: 12px;
+				line-height: 1.5em;
+			}
+		}
+	}
+	#about_actions{
+		margin: 10px 0 0 0;
+		@include link('a.about_action') {
+			padding: 8px 16px;
+			float: right;
+		}
+		a.about_action{
+			img.about_action_icon{
+				border: 0 none;
+				outline: none;
+				width: 30px;
+				height: 30px;
+				display: block;
+				float: left;
+			}
+			span.about_action_label{
+				display: block;
+				font-size: 18px;
+				font-weight: $bold;
+				float: left;
+				margin: 5px 0 0 5px;
+			}
+		}
+		.about_action_wrapper{
+			display: block;
+		}
+	}
+}

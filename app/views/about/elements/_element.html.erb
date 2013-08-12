@@ -1,0 +1,16 @@
+<% cls = '' %>
+<% cls = ' even' if (index % 2 == 0)  %>
+<% img_src = "app/icons/about/elements/#{key}.png" %>
+<% lang_base = "app.views.about.elements.#{key}" %>
+<div class="about_element">
+	<div class="about_element_icon_container<%= cls %>">
+		<div class="about_element_icon_wrapper">
+			<%= image_tag img_src, width: 80, height: 45, class: 'about_element_icon' %>
+			<h2 class="about_element_icon_label"><%= t "#{lang_base}.label" %></h2>
+		</div>
+	</div>
+	<div class="about_element_content">
+		<p><%= t "#{lang_base}.content" %></p>
+	</div>
+	<div class="clear"></div>
+</div>

@@ -1,0 +1,13 @@
+<div class="fmx_slider" id="splash_slider">
+	<div class="fmx_slider_loader splash_slider_loader" data-width="160" data-src="<%= image_url 'shared/loaders/loader20x20.png' %>"></div>
+	<div id="splash_slider_inner_wrapper">
+		<div class="fmx_slider_navigation splash_slider_navigation prev">
+			<%= image_tag 'app/slider/navigation/prev.png', width: 23, height: 86 %>
+		</div>
+		<div class="fmx_slider_navigation splash_slider_navigation next">
+			<%= image_tag 'app/slider/navigation/next.png', width: 23, height: 86 %>
+		</div>
+	</div>
+	<%= render partial: 'splash/slider/slides/km2' %>
+	<%= render partial: 'splash/slider/slides/loopa' %>
+</div>

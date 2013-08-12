@@ -1,0 +1,7 @@
+<div id="about_elements">
+<% i = 0  %>
+<% _t('app.views.about.elements').each do |key, el| %>
+	<%= render partial: 'about/elements/element', locals: { key: key, el: el, index: i } %>
+	<% i = i + 1 %>
+<% end %>
+</div>

@@ -1,0 +1,7 @@
+<% content_for :head do %>
+	<%= stylesheet_link_tag 'app/views/splash' %>
+	<%= javascript_include_tag 'app/views/splash' %>
+<% end %>
+<div id="splash" class="inner_content">
+	<%= render partial: 'splash/slider/slider' %>
+</div>

@@ -1,0 +1,11 @@
+<% target = '' %>
+<% target = ' target="_blank"' if el[:new_window] %>
+<% img_src = "app/icons/about/actions/#{el[:key]}.png" %>
+<% lang_key = "app.views.about.actions.#{el[:key]}" %>
+<a href="<%= el[:link] %>"<%= target %> class="about_action button">
+	<span class="about_action_wrapper">
+		<%= image_tag img_src, width: 30, height: 30, class: 'about_action_icon' %>
+		<span class="about_action_label"><%= t lang_key %></span>
+		<span class="clear"></span>
+	</span>
+</a>

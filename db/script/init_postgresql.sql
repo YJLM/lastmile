@@ -27,14 +27,12 @@ CREATE TABLE public.organizations (
 
 ALTER SEQUENCE public.organizations_id_seq OWNED BY public.organizations.id;
 
-CREATE SEQUENCE public.users_id_seq;
-
 CREATE TABLE public.users (
-                id BIGINT NOT NULL DEFAULT nextval('public.users_id_seq'),
+                id BIGINT NOT NULL,
                 organization_id BIGINT NOT NULL,
                 name VARCHAR(100) NOT NULL,
                 mail VARCHAR(100) NOT NULL,
-                role VARCHAR(100) NOT NULL,
+                role VARCHAR(100),
                 facebook TEXT,
                 twitter TEXT,
                 created_at TIMESTAMP NOT NULL,
@@ -42,8 +40,6 @@ CREATE TABLE public.users (
                 CONSTRAINT users_pk PRIMARY KEY (id)
 );
 
-
-ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
 
 ALTER TABLE public.users ADD CONSTRAINT organizations_users_fk
 FOREIGN KEY (organization_id)
