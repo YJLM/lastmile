@@ -11,6 +11,7 @@ development:
   elements:
     km2: '/km2'
     loopa: '/loopa'
+    compass: '/compass/front/index.php?'
 production:
   scope: ''
   mail:
@@ -20,3 +21,4 @@ production:
   elements:
     km2: '/km2'
     loopa: '/loopa/'
+    compass: '/compass/front/index.php?'
