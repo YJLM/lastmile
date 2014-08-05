@@ -183,6 +183,15 @@ body{
 					@include background-gradient(#9DDA67, #70971F);
 				}
 			}
+			&.blue_green{
+				@include background-gradient(#00A895, #00595E);
+				margin-left: 114px;
+				margin-top: 30px;
+				float:left;
+				&:hover{
+					@include background-gradient(#40C7A9, #036760);
+				}
+			}
 			img{
 				display: block;
 				border: 0 none;
