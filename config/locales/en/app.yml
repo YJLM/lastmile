@@ -21,7 +21,7 @@ en:
          - "Last Mile is a project focused on visualizing information relevant to logistic operations in different contexts, collecting and displaying urban and corporate information. Last Mile is composed of three different platforms: Km2, Loopa and Compass."
          - "The goal of km2 is to characterize areas of some of the world’s major megacities and observe their dynamics and conditions to obtain valuable information about factors that have influence over urban logistics performance. This is done using system designed for this purpose that allows easy visualization of the data. "
          - "Loopa is a tool that allows the user to map and observe the operations of a distribution network of a company. The tool allows the easy visualization of data and provides analytical insight that enables the observer to understand the behavior of the customers and the demand in the specified region. "
-         - "Compass was designed for analysing the GPS information of truck fleets. This tool detects the routes and stops of the trucks and creates charts with statistical information in order to allow the users to have a detailed view of the behavior of the trucks. "
+         - "Compass is a tool whose main objective is to process and analyze GPS data in order to find out statistical information as well as to display the information in a friendly way. The user is able to have a detailed view of the behavior of the trips, trucks and fleets."
     footer:
       copyright: 'MIT CTL &copy; 2013. All Rights Reserved'
     views:

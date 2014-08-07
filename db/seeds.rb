@@ -56,3 +56,13 @@ create_user(mit, name: 'Angela W.', role: 'Data Collection', mail: 'yinjwang@mit
 create_user(mit, name: 'Lesley W.', role: 'Data Collection', mail: 'leswang@mit.edu', facebook: 'https://www.facebook.com/laa.jones.9', twitter: nil)
 create_user(mit, name: 'Yin Jin Lee', role: nil, mail: 'yinjin@mit.edu', facebook: nil, twitter: nil)
 create_user(mit, name: 'Nathalia Z.', role: nil, mail: 'nzambuzi@mit.edu', facebook: 'https://www.facebook.com/nathalia.zambuzi', twitter: nil) 
+
+# itesm users v2
+create_user(itesm, name: 'Susana C.', role: 'Developer', mail: 'scarmol@mit.edu', facebook: 'https://www.facebook.com/susiecm', twitter: 'https://twitter.com/suecarmol')
+create_user(itesm, name: 'Samantha S.', role: 'Data Analyst', mail: 'ssalames@mit.edu', facebook: 'https://www.facebook.com/samantha.salame', twitter: '')
+create_user(itesm, name: 'Gerardo M.', role: 'Data Analyst', mail: 'gmendez@mit.edu', facebook: 'https://www.facebook.com/Gerardo.MendezR77', twitter: '')
+create_user(itesm, name: 'Joel C.', role: 'Developer', mail: 'jcano@mit.edu', facebook: '', twitter: 'https://twitter.com/FeatherMexico')
+create_user(itesm, name: 'Salomón W.', role: 'Data Analyst', mail: 'salomonw@mit.edu', facebook: 'https://www.facebook.com/s.wollenstein1', twitter: 'https://twitter.com/salomonwb')
+create_user(itesm, name: 'Gabriel A.', role: 'Designer', mail: 'arrietap@mit.edu', facebook: '', twitter: '')
+create_user(itesm, name: 'Arturo A.', role: 'Developer', mail: 'arturoaguirretorres@gmail.edu', facebook: 'https://www.facebook.com/arturoat', twitter: 'https://twitter.com/arturo_kt')
+
